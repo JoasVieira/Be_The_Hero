@@ -3,27 +3,27 @@ const app = require('../../src/app')
 const connection = require('../../src/database/connection')
 
 describe('ONG', () => {
-    beforeEach(async () => {
-        await connection.migrate.rollback()
-        await connection.migrate.latest()
-    })
+  beforeEach(async () => {
+    await connection.migrate.rollback()
+    await connection.migrate.latest()
+  })
 
-    afterAll(async () => {
-        await connection.destroy()
-    })
+  afterAll(async () => {
+    await connection.destroy()
+  })
 
-    it('should be alble to create a new ONG', async () => {
-        const response = await request(app)
-            .post('/ongs')
-            .send({
-                name: "APAE",
-                email: "contato@acad.com.br",
-                whatsapp: "44988445759",
-                city: "Douradina",
-                uf: "PR"
-            })
+  it('should be alble to create a new ONG', async () => {
+    const response = await request(app)
+      .post('/ongs')
+      .send({
+        name: "APAE",
+        email: "contato@acad.com.br",
+        whatsapp: "44988445759",
+        city: "Douradina",
+        uf: "PR"
+      })
 
-        expect(response.body).toHaveProperty('id')
-        expect(response.body.id).toHaveLength(8)
-    })
+    expect(response.body).toHaveProperty('id')
+    expect(response.body.id).toHaveLength(8)
+  })
 })

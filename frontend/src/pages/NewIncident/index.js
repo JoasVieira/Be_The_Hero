@@ -67,7 +67,7 @@ export default function NewIncident() {
                     <input
                         placeholder="Valor em reais"
                         value={value}
-                        onChange={e => setValue(e.target.value)}
+                        onChange={e => setValue(e.target.value[0])}
                     />
 
                     <button className="button" type="submit">Cadastrar</button>
